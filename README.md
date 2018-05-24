@@ -3,6 +3,35 @@
 [PlantUML][] Extension for [Python-Markdown][]
 ==============================================
 
+Use the image
+-------------------------
+
+You can use this image to serve developing project and get rid of annoying
+`JAVA RUN` program which keeps gainning focus when editing plantuml.
+
+The entrypoint for this image is `mkdocs`, and default argvs
+are `serve --dev-addr=0.0.0.0:8000`.
+
+Examples:
+
+* mkdocs serve at current dir
+
+    ```shell
+    docker run -it --rm -v `pwd`:/docs -p 8000:8000 dhuan/mkdocs_plantuml
+    ```
+
+* build docs at current dir
+
+    ```shell
+    docker run -it --rm -v `pwd`:/docs dhuan/mkdocs_plantuml build
+    ```
+
+Please check the [Dockerfile](Dockerfile) and [Docker][] website for addtional
+infomation.
+
+Documentation for the extension itself
+--------------------------------------
+
 This plugin implements a block extension which can be used to specify a [PlantUML][] diagram which will be
 converted into an image and inserted in the document.
 
@@ -54,7 +83,7 @@ To use the plugin with [Python-Markdown][] you have two choices:
 
 * copy the file `plantuml.py` in the `extensions` folder of [Python-Markdown][]. For example, for Python 2.7 you must
   do:
-  
+
   ```console
   $ sudo cp plantuml.py /usr/lib/python27/site-packages/markdown/extensions/
   ```
@@ -66,7 +95,7 @@ To use the plugin with [Python-Markdown][] you have two choices:
   $ cp plantuml.py "$INSTALLPATH/mdx_plantuml.py"
   $ export PYTHONPATH="$INSTALLPATH"
   ```
-  
+
   You must export `PYTHONPATH` before running `markdown_py`, or you can put the definition in `~/.bashrc`.
 
 After installed, you can use this plugin by activating it in the `markdownm_py` command. For example:
@@ -93,3 +122,4 @@ tests execution without clobbering the system.
 [Graphviz]: http://www.graphviz.org
 [Gentoo]: http://www.gentoo.org
 [layman]: http://wiki.gentoo.org/wiki/Layman
+[Docker]: https://www.docker.com
