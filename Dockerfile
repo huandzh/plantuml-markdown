@@ -9,10 +9,10 @@ LABEL maintainer="DHuan <hd@iamhd.top>" \
 # package indexes
 
 # use aliyun alpine mirrors:
-# COPY repositories /etc/apk/repositories
+COPY repositories /etc/apk/repositories
 
 # use aliyun pip mirrors:
-# COPY pip.conf /etc/pip.conf
+COPY pip.conf /etc/pip.conf
 
 # Phrase 1 : Install plantuml
 
