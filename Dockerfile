@@ -36,7 +36,7 @@ RUN rm -rf /var/cache/apk/*
 # Phrase 2 : Install mkdocs and plantuml-markdown extension
 
 # install `mkdocs`
-RUN pip --no-cache-dir install mkdocs
+RUN pip --no-cache-dir install mkdocs-material
 
 # add plugins:
 # add plantuml-markdown
