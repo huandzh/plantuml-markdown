@@ -1,9 +1,9 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine
 
 # version is the same as plantuml.py
 LABEL maintainer="DHuan <hd@iamhd.top>" \
-      description="This image is mkdocs with plantuml(svg only) support." \
-      version="1.2.3" \
+      description="This image is mkdocs with plantuml support." \
+      version="3.1.2" \
       index="official"
 
 # package indexes
@@ -17,7 +17,7 @@ LABEL maintainer="DHuan <hd@iamhd.top>" \
 # Phrase 1 : Install plantuml
 
 # add a small-size font, else plantuml will fail
-RUN apk add --update openjdk8-jre-base openjdk8-jre ttf-droid
+RUN apk add --update openjdk8-jre-base openjdk8-jre ttf-droid graphviz
 
 # busybox wget can't use `https` by itself, add `curl` instead
 RUN apk add curl \
@@ -35,12 +35,8 @@ RUN rm -rf /var/cache/apk/*
 
 # Phrase 2 : Install mkdocs and plantuml-markdown extension
 
-# install `mkdocs`
-RUN pip --no-cache-dir install mkdocs
-
-# add plugins:
-# add plantuml-markdown
-COPY plantuml.py /usr/local/lib/python3.6/site-packages/markdown/extensions/
+# install `mkdocs` and plantuml-markdown
+RUN pip --no-cache-dir install mkdocs plantuml-markdown
 
 # Ready
 
