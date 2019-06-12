@@ -52,5 +52,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
 .directory
 .idea
+env_test
+.env
+.eggs
+.env*
