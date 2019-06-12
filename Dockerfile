@@ -20,11 +20,12 @@ LABEL maintainer="DHuan <hd@iamhd.top>" \
 RUN apk add --update openjdk8-jre-base openjdk8-jre ttf-droid graphviz
 
 # busybox wget can't use `https` by itself, add `curl` instead
-RUN apk add curl \
-    && mkdir -p /opt \
-    && curl -L https://sourceforge.net/projects/plantuml/files/plantuml.jar \
-    -o /opt/plantuml.jar \
-    && apk del curl
+# RUN apk add curl \
+#     && mkdir -p /opt \
+#     && curl -L https://sourceforge.net/projects/plantuml/files/plantuml.jar \
+#     -o /opt/plantuml.jar \
+#     && apk del curl
+COPY plantuml.jar /opt/plantuml.jar
 
 # add plantuml executable
 COPY plantuml /usr/local/bin/plantuml
